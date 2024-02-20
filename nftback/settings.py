@@ -38,17 +38,24 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nftback',
-    'blog',
-    'api',
+    'blogs.blog',
+    'blogs.api',
     'rest_framework',
-    'comment',
-    'media',
-    'search',
-    'haystack',
+    'blogs.comment',
+    'blogs.media',
+    'blogs.categories',
+    'blogs.authors',
+    'blogs.search',
     'corsheaders',
-    'categories',
-    'authors',
-    'post',
+    'blogs.post',
+    'blogs',
+    'robot',
+    'robot.robots',
+    'social_django',
+    'oauth',
+    'web_eth',
+    'web_eth.api_eth',
+    'web_eth.finance',
 
 ]
 
@@ -143,7 +150,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/blogs/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LANGUAGE_CODE = 'fr-fr'
@@ -198,7 +205,17 @@ REST_FRAMEWORK = {
     ],
     
     'DEFAULT_PERMISSION_CLASSES': [
-        'api.permissions.IsAdminOrReadOnly',
+        'blogs.api.permissions.IsAdminOrReadOnly',
     ],
     
 }
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '<Your-Google-Client-ID>'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '<Your-Google-Client-Secret>'
+# Similar for other providers

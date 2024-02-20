@@ -16,12 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from search.views import search_view
+from blogs.search.views import search_view
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('api.api')),
+    path('api/', include('api.urls')),
     # Autres URLs pour d'autres parties de votre projet
     #path('search_results/', search_view, name='search_results'),
 ]
